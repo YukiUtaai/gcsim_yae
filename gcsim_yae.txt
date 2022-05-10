@@ -1,0 +1,69 @@
+####----GENERATED CHARACTER BLOCK DO NOT EDIT----####
+
+yaemiko char lvl=81/90 cons=6 talent=10,10,10;
+yaemiko add weapon="kagurasverity" refine=5 lvl=90/90;
+yaemiko add set="gladiatorsfinale" count=2;
+yaemiko add set="wandererstroupe" count=2;
+yaemiko add stats def%=0.1970 def=79.00 hp=5079 hp%=0.1690 atk=311.0 atk%=0.9030 em=84.00 cr=0.5480 cd=1.073 electro%=0.4660;
+
+sucrose char lvl=80/90 cons=6 talent=1,3,3;
+sucrose add weapon="sacrificialfragments" refine=5 lvl=60/70;
+sucrose add set="viridescentvenerer" count=4;
+sucrose add stats def=120.0 hp=3845 atk=105.0 er=0.05800 em=505.0 cr=0.05400 cd=0.2800;
+
+zhongli char lvl=81/90 cons=0 talent=1,7,5;
+zhongli add weapon="blacktassel" refine=5 lvl=90/90;
+zhongli add set="tenacityofthemillelith" count=4;
+zhongli add stats def=94.00 hp=5557 hp%=1.590 atk=511.0 er=0.1230 em=128.0 cr=0.2260 cd=0.3810;
+
+sara char lvl=80/90 cons=6 talent=3,8,8;
+sara add weapon="skywardharp" refine=5 lvl=90/90;
+sara add set="emblemofseveredfate" count=4;
+sara add stats def=255.0 hp=5258 atk=1016 er=0.2590 em=63.00 cr=0.6260 cd=0.4350 electro%=0.4660;
+
+
+####----END GENERATED CHARACTER BLOCK DO NOT EDIT----####
+
+
+# options mode = sl;
+options mode = apl;
+target lvl = 100 resist=0.1;
+energy every interval=480,720 amount=1;
+active zhongli;
+
+zhongli skill[hold=1]
+        +if= .status.zhongliskill==0;
+
+yaemiko burst,skill:3
+        +if= .status.saraskill>0 && .status.sucroseskill>0;
+        
+yaemiko skill;
+
+
+sara skill, burst
+     +swap_to=yaemiko
+     +if= .status.saraskill==0;
+
+sara skill
+     +swap_to=yaemiko
+     +if= .status.saraskill==0;
+
+sucrose burst
+     +swap_to=yaemiko
+     +if= .status.sucroseskill==0;
+     
+sucrose skill
+    +swap_to=yaemiko
+     +if= .status.sucroseskill==0;
+     
+     
+ 
+# Gap fill
+# yaemiko attack+is_onfield;
+yaemiko attack;
+
+
+
+
+
+
